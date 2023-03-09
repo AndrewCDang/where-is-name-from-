@@ -1,38 +1,326 @@
-.App {
-  text-align: center;
+*{
+  font-family:sans-serif;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* General */
+.text-16{
+  font-size:16px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.text-14{
+  font-size:14px;
 }
-
+.text-20{
+  font-size:20px;
+}
+.heading{
+  font-size:24px;
+}
+.text-center{
+  text-align:center;
+}
+.bold{
+  font-weight: bold;
+}
+.margin-0{
+  margin:0;
+}
+.gray-text{
+  color:darkgray
+}
+/* General Content */
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  width: 90vw;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items:center;
   font-size: calc(10px + 2vmin);
+  color: black;
+}
+.Aside-section{
+  /* width:10vw; */
+  max-height:95px;
+  width: 400px;
+  /* border: 1px solid darkgray; */
+  display: flex;
+  flex-flow: column nowrap;
+  align-items:center;
+  padding:32px 32px 32px 32px;
+  border-radius: 32px;
+  box-shadow:-5px 10px 15px rgba(0,0,0,0.3);
+  margin-top:32px;
+  overflow:hidden;
+}
+.display-results{
+  max-height:0px;
+}
+.data-expand{
+  max-height:700px!important;
+}
+/* Input Container */
+.input-container{
+  display: flex;
+  flex-flow: column nowrap;
+  /* padding-bottom: 16px; */
+  /* border-bottom: 1px solid lightgray; */
+}
+
+.input-fields{
+  display:flex;
+  flex-flow: row nowrap;
+  align-content:center;
+  /* margin-top: 8px;
+  margin-bottom:16px; */
+}
+.input-btn{
+  padding: 8px 16px;
+  border-radius:16px;
+  border: 1px solid darkgray;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  margin-left: 16px;
+  transition: all 0.15s;
+}
+.input-area{
+  padding: 8px 16px;
+  border-radius:16px;
+  border: 1px solid darkgray;
+  outline: 0px solid white;
+  background-color:white;
+  transition: all 0.3s;
+}
+/* Map */
+#worldMap-container{
+  width: 100%;
+  height: auto;
+  display:flex;
+  justify-content: center;
+}
+
+#worldMap-svg{
+  width: 80%;
+  height: 80%;
+  place-self:center;
+}
+svg > path  {
+  fill: lightgray;
+  stroke: lightgray;
+  transition: all 0.6s ease-in-out;
+  z-index:0;
+  filter: drop-shadow(0 0 0.1rem rgba(256, 256, 256, 0));
+}
+.svgItem{
+  transition: all 0.6s ease-in-out
+}
+/* Display Country probability % */
+.country-item{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  flex:1;
+  overflow:hidden;
+  border-bottom: 1px solid lightgray;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+.country-item:last-child{
+  border-bottom: none;
+}
+.country-item p {
+  height: 50px;
+  line-height: 50px;
+}
+.country-item-obj:first-child{
+  width:100px;
+  overflow:hidden;
+  padding-right: 16px;
+  border-right: 1px solid lightgray
+}
+.country-item:first-child p{
+  padding-top:8px;
+  line-height:42px!important;
+}
+.country-item:last-child p{
+  padding-bottom:8px;
+  line-height:52px!important;
+}
+.country-countainer{
+  /* flex: 1; */
+  overflow:hidden;
+  /* border: 1px solid lightgray; */
+  border-radius:16px;
+  margin-top:16px;
+  /* margin-bottom:32px; */
+  /* height:250px; */
+  display: flex;
+  align-content:center;
+  max-height: 250px;
+  flex-flow: column nowrap;
+  transition: all 0.5s ease-in-out;
+
+}
+.displayrResults{
+  border-bottom: 1px solid lightgray;
+}
+.op-0{
+  opacity:0;
+}
+/* Pie-Chart */
+.pie-container{
+  /* flex:1;
+  width:100%;
+  padding-top: 32px;
+  border-top: 1px solid lightgray; */
+  margin-top:16px;
+  display:flex;
+  align-content:center;
+  max-height:250px;
+  overflow:hidden;
+}
+
+/* SVG Image */
+.percent-09{
+  fill:#331118;
+  stroke-width: 1;
+  filter: drop-shadow(0 0 0.5rem #ff5678) ;
+  stroke: white;
+}
+
+.percent-075{
+  fill:#4C1924;
+  stroke-width: 1;
+  filter: drop-shadow(0 0 0.5rem #ff5678);;
+  stroke: white;
+  transition: all 0.15s
+}
+
+.percent-05{
+  fill: #662230;
+  stroke-width: 1;
+  stroke: white;
+  filter: drop-shadow(0 0 0.5rem #ff5678);
+  z-index:5;
+}
+.percent-03{
+  fill: #7F2B3C;
+  stroke-width: 1;
+  filter: drop-shadow(0 0 0.5rem rgba(255, 86, 120, 0.3));
+  stroke: white;
+}
+.percent-02{
+  fill: #993348;
+  stroke-width: 1;
+  filter: drop-shadow(0 0 0.5rem rgba(255, 86, 120, 0.3));
+  stroke: white;
+}
+.percent-015{
+  fill: #B23C54;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-01{
+  fill: #CC4460;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-009{
+  fill: #E54D6C;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-008{
+  fill: #ff5678;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-007{
+  fill: #FF6685;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-006{
+  fill: #FF7793;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-005{
+  fill: #FF88A0;
+  stroke-width: 1;
+  stroke: white;
+  filter: drop-shadow(0 0 0.3rem white);
+
+}
+.percent-004{
+  fill: #FF99AE;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-003{
+  fill: #FFAABB;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-002{
+  fill: #FFBBC9;
+  stroke-width: 1;
+  stroke: white;
+}
+.percent-001{
+  fill: #FFCCD6;
+  stroke-width: 1;
+  stroke: white;
+}
+
+/* Animation focus */
+.input-area:focus{
+  /* outline: none;
+  filter: drop-shadow(0 0 0.2rem #ff5678); */
+  animation-name: focus;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.input-btn:active{  
+  border: 1px solid rgba(255,86,120);
   color: white;
+  background-color: rgba(255,86,120);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes focus {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0.2rem rgba(255,86,120,0));
   }
-  to {
-    transform: rotate(360deg);
+  40%,
+  60% {
+    filter: drop-shadow(0 0 0.2rem rgba(255,86,120,1));
+  }
+}
+/* Media Screen */
+@media screen and (max-width: 1000px) {
+  .App-header  {
+    min-height: 0px!important;
+    height:100vh;
+    flex-direction: column;
+  }
+  .Aside-section{
+    transform:scale(0.7);
+    margin-top:0px!important;
+    width:auto!important;
+  }
+  #worldMap-container{
+    margin-top:32px;
+    transform:translateY(40px)
+  }
+  #worldMap-svg{
+    width:90%!important;
+    height:80%!important;
+  }
+  .country-countainer {
+    height:200px!important;
   }
 }
